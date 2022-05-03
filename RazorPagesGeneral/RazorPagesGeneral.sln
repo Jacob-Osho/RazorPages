@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesGeneral", "RazorP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesGeneral.Models", "RazorPagesGeneral.Models\RazorPagesGeneral.Models.csproj", "{C04E310A-EE75-45D7-8502-1B075A966231}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorPagesGeneral.Services", "RazorPagesGeneral.Services\RazorPagesGeneral.Services.csproj", "{C8738BEC-079E-4A18-97B4-0E917E71D199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RazorPagesGeneral.Services", "RazorPagesGeneral.Services\RazorPagesGeneral.Services.csproj", "{C8738BEC-079E-4A18-97B4-0E917E71D199}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

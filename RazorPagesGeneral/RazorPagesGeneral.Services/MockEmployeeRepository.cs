@@ -43,7 +43,7 @@ namespace RazorPagesGeneral.Services
                     Id = 3,
                     Name = "Mimito",
                     Email = "Mimito@gmail.com",
-                    PhotoPath = "avatar3.png",
+                    PhotoPath = "avatar4.png",
                     Department = Dept.IT
                 },
                 new Employee
@@ -59,7 +59,7 @@ namespace RazorPagesGeneral.Services
                     Id = 5,
                     Name = "Natasha",
                     Email = "Natasha@gmail.com",
-                    PhotoPath = "avatar4.png",
+                    PhotoPath = "avatar3.png",
                     Department = Dept.HR
                 }
             };
@@ -67,6 +67,11 @@ namespace RazorPagesGeneral.Services
         public IEnumerable<Employee> GetAllEmployees()
         {
             return _employeeList;
+        }
+
+        public Employee GetEmployeeById(int id)
+        {
+            return _employeeList.FirstOrDefault(x => x.Id == id);
         }
     }
 }

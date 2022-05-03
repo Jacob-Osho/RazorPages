@@ -1,7 +1,30 @@
-﻿ @page
+﻿@page
 @model RazorPagesGeneral.Pages.Employees.EmpoyeesModel
 @{
     ViewData["Title"] = "Employees";
 }
 <h1>Employees</h1>
 <h3>@Model.Employees.Count()</h3>
+<div class="row">
+    @foreach (var item in Model.Employees)
+    {
+        var photoPath = $"/images/{item.PhotoPath ?? "noimage.png"}";
+        <div class="col-12  col-sm-6 col-lg-4">
+            <div class=card-deck>
+                <div class="cardBoxShadow card m-3">
+                    <div class="cardHeaderStyle card-header text-center ">
+                        <h3>@item.Name</h3>
+                    </div>
+                    <div class="cardBodyStyle text-center">
+                        <img class="card-img-top imageThumbnail" src="@photoPath" asp-append-version="true"/>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-page="/Employees/Details" asp-route-id="@item.Id" class="btn btn-success m-1 buttonShadow">View</a>
+                        <a href="#" class="btn btn-primary m-1 buttonShadow">Edit</a>
+                        <a href="#" class="btn btn-danger m-1 buttonShadow">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

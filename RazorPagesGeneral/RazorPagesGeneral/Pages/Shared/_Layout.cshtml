@@ -9,9 +9,11 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar fixed-top navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 menuBg">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">RazorPagesGeneral</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                <img src="/images/LessonsCoreLogo.png" alt="Lessons">     
+                </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,14 +34,14 @@
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container containerBordered">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="footer text-muted">
+        <div class="container border">
             &copy; 2022 - RazorPagesGeneral - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
     </footer>
