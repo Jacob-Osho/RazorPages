@@ -11,6 +11,7 @@ namespace RazorPagesGeneral.Services
     {
         IEnumerable<Employee> GetAllEmployees();
         Employee GetEmployeeById(int id);
+        Employee UpdateInfo(Employee updatedEmployee);
 
     }
 }

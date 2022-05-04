@@ -73,5 +73,19 @@ namespace RazorPagesGeneral.Services
         {
             return _employeeList.FirstOrDefault(x => x.Id == id);
         }
+
+        public Employee UpdateInfo(Employee updatedEmployee)
+        {
+            Employee employee = _employeeList.FirstOrDefault(x => x.Id == updatedEmployee.Id);
+            if(employee  is not null)
+            {
+                employee.Name = updatedEmployee.Name;
+                employee.Email = updatedEmployee.Email;
+                employee.PhotoPath = updatedEmployee.PhotoPath;
+                employee.Department = updatedEmployee.Department;
+                
+            }
+            return employee;
+        }
     }
 }
