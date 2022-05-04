@@ -2,6 +2,13 @@
 @model RazorPagesGeneral.Pages.Employees.EmpoyeesModel
 @{
     ViewData["Title"] = "Employees";
+    if(TempData["SM"] is not null)
+    {
+        <div class="alert alert-success text-center">
+        @TempData["SM"]
+
+        </div>
+    }
 }
 <h1>Employees</h1>
 <h3>@Model.Employees.Count()</h3>

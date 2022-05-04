@@ -17,6 +17,9 @@ namespace RazorPagesGeneral.Pages.Employees
         public Employee Employee { get; private set; }
         [BindProperty]// делает его доступным во всех пост методах без передачи в параметры
         public IFormFile Photo { get;  set; }
+        [BindProperty]
+        public bool Notify { get; set; }
+        public string Message { get; set; }
         public EditModel(IEmployeeRepository employeeRepository,IWebHostEnvironment webHostEnvironment)
         {
             _employeeRepository = employeeRepository;
@@ -44,8 +47,17 @@ namespace RazorPagesGeneral.Pages.Employees
 
 
             Employee = _employeeRepository.UpdateInfo(employee);
+            TempData["SM"]=$"Upadete {Employee.Name} successful";
             return RedirectToPage("Employees");
             
+        }
+        public void OnPostUpdateNotificationPreferences(int id)
+        {
+            if (Notify)
+                Message = "Thank's for turning on notification";
+            else
+                Message = "email notifications turned off";
+            Employee = _employeeRepository.GetEmployeeById(id);
         }
         private string UploadingFileProcces()
         {
