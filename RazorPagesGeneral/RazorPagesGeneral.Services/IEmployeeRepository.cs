@@ -13,5 +13,6 @@ namespace RazorPagesGeneral.Services
         Employee GetEmployeeById(int id);
         Employee UpdateInfo(Employee updatedEmployee);
 
+        Employee AddEmployee(Employee newEmployee);
     }
 }
