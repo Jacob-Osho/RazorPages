@@ -19,7 +19,7 @@ namespace RazorPagesGeneral.Services
                     Id = 0,
                     Name = "Jimbo",
                     Email = "Jimbo@gmail.com",
-                    PhotoPath ="avatar.png",
+                    PhotoPath = "avatar.png",
                     Department = Dept.HR
                 },
                 new Employee
@@ -68,16 +68,29 @@ namespace RazorPagesGeneral.Services
         public Employee AddEmployee(Employee newEmployee)
         {
             newEmployee.Id = _employeeList.Max(x => x.Id) + 1;
-                _employeeList.Add(newEmployee);
+            _employeeList.Add(newEmployee);
             return newEmployee;
         }
 
         public Employee DeleteEmployee(int id)
         {
-         Employee employeeToDelete=  _employeeList.FirstOrDefault(x => x.Id == id);
-            if(employeeToDelete != null)
-            _employeeList.Remove(employeeToDelete);
-            return employeeToDelete;    
+            Employee employeeToDelete = _employeeList.FirstOrDefault(x => x.Id == id);
+            if (employeeToDelete != null)
+                _employeeList.Remove(employeeToDelete);
+            return employeeToDelete;
+        }
+
+        public IEnumerable<DeptHeadCount> EmployeeCountbyDept(Dept? dept)
+        {
+            IEnumerable<Employee> query = _employeeList;
+            if (dept.HasValue)
+                query = query.Where(x => x.Department == dept.Value);
+
+            return query.GroupBy(x => x.Department)
+                .Select(x => new DeptHeadCount {
+                    Department = x.Key.Value,//присвоение департамента
+                    Counter = x.Count()
+                }).ToList();
         }
 
         public IEnumerable<Employee> GetAllEmployees()
@@ -93,13 +106,13 @@ namespace RazorPagesGeneral.Services
         public Employee UpdateInfo(Employee updatedEmployee)
         {
             Employee employee = _employeeList.FirstOrDefault(x => x.Id == updatedEmployee.Id);
-            if(employee  is not null)
+            if (employee is not null)
             {
                 employee.Name = updatedEmployee.Name;
                 employee.Email = updatedEmployee.Email;
                 employee.PhotoPath = updatedEmployee.PhotoPath;
                 employee.Department = updatedEmployee.Department;
-                
+
             }
             return employee;
         }

@@ -8,6 +8,13 @@
 }
 <div class="row justify-content-center m-3">
     <div class="col col-lg-8">
+       @* @await Component.InvokeAsync("HeadCount", new {department = Model.Employees.Department} )*@
+       <vc:head-count  department="@Model.Employees.Department"/>
+    </div>
+</div>
+
+<div class="row justify-content-center m-3">
+    <div class="col col-lg-8">
         <div class="card cardBoxShadow">
             <div class="card-header cardHeaderStyle">
                 <h1>@Model.Employees.Name</h1>
