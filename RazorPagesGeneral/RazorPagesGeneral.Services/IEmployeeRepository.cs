@@ -14,5 +14,6 @@ namespace RazorPagesGeneral.Services
         Employee UpdateInfo(Employee updatedEmployee);
 
         Employee AddEmployee(Employee newEmployee);
+        Employee DeleteEmployee(int  id);
     }
 }
