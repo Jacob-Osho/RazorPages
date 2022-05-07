@@ -10,11 +10,13 @@ namespace RazorPagesGeneral.Services
     public interface IEmployeeRepository
     {
         IEnumerable<Employee> GetAllEmployees();
+        IEnumerable<Employee> Search(string searchTerm);
         Employee GetEmployeeById(int id);
         Employee UpdateInfo(Employee updatedEmployee);
 
         Employee AddEmployee(Employee newEmployee);
         Employee DeleteEmployee(int  id);
        IEnumerable<DeptHeadCount> EmployeeCountbyDept(Dept? dept);
+
     }
 }

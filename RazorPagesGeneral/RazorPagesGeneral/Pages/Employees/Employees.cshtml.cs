@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPagesGeneral.Models;
 using RazorPagesGeneral.Services;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace RazorPagesGeneral.Pages.Employees
@@ -15,10 +14,12 @@ namespace RazorPagesGeneral.Pages.Employees
         {
             _db = db;
         }
+        [BindProperty(SupportsGet =true)]//работает только на методе пост
+        public string SearchTerm { get; set; }
         public IEnumerable<Employee> Employees { get; set; }
         public void OnGet()
         {
-            Employees = _db.GetAllEmployees();
+            Employees = _db.Search(SearchTerm);
         }
     }
 }
