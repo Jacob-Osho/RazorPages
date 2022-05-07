@@ -15,7 +15,7 @@ namespace RazorPagesGeneral.Pages.Employees
         private readonly IWebHostEnvironment _webHostEnvironment;
 
         [BindProperty]
-        public Employee Employee { get;  set; }
+        public Employee Employee { get; set; }
         [BindProperty]// делает его доступным во всех пост методах без передачи в параметры
         public IFormFile Photo { get; set; }
         [BindProperty]
@@ -48,7 +48,8 @@ namespace RazorPagesGeneral.Pages.Employees
                     if (Employee.PhotoPath is not null)
                     {
                         string filePath = Path.Combine(_webHostEnvironment.WebRootPath, "images", Employee.PhotoPath);
-                        System.IO.File.Delete(filePath);
+                        if (Employee.PhotoPath != "noimage.png")
+                            System.IO.File.Delete(filePath);
                     }
                     Employee.PhotoPath = UploadingFileProcces();
                 }

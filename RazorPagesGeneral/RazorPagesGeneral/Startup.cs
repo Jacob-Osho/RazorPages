@@ -16,6 +16,7 @@ namespace RazorPagesGeneral
 {
     public class Startup
     {
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,7 +34,8 @@ namespace RazorPagesGeneral
                 }
             });
             services.AddRazorPages();
-            services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            //services.AddSingleton<IEmployeeRepository, MockEmployeeRepository>();
+            services.AddScoped<IEmployeeRepository, SQLEmployeeRepository>();
             services.Configure<RouteOptions>(options =>
             {
                 options.LowercaseUrls = true;
