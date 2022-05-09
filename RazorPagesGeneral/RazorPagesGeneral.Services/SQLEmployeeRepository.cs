@@ -1,4 +1,5 @@
-﻿using RazorPagesGeneral.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using RazorPagesGeneral.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,12 @@ namespace RazorPagesGeneral.Services
 
         public Employee AddEmployee(Employee newEmployee)
         {
-           _context.Employees.Add(newEmployee);
-            _context.SaveChanges();
+            //_context.Employees.Add(newEmployee);
+            //_context.SaveChanges();
+            //return newEmployee;
+            _context.Database.ExecuteSqlRaw("spAddNewEmployee {0},{1},{2},{3}", newEmployee.Name, newEmployee.Email, newEmployee.PhotoPath, newEmployee.Department);
             return newEmployee;
+
         }
 
         public Employee DeleteEmployee(int id)
@@ -50,12 +54,16 @@ namespace RazorPagesGeneral.Services
 
         public IEnumerable<Employee> GetAllEmployees()
         {
-            return _context.Employees;
+            //return _context.Employees;
+            return _context.Employees.FromSqlRaw<Employee>("Select * From Employees").ToList();
         }
 
         public Employee GetEmployeeById(int id)
         {
-            return _context.Employees.Find(id);
+            //return _context.Employees.Find(id);
+            return _context.Employees
+                    .FromSqlRaw<Employee>("CideFirstSpGetEmployeeById {0}",id)
+                    .ToList().FirstOrDefault();
         }
 
         public IEnumerable<Employee> Search(string searchTerm)
